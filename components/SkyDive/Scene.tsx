@@ -149,7 +149,7 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
           floatSpeed={3}
         >
         </FloatingCan> */}
-        <AriaModel ref={canRef} animation="Falling">
+        <AriaModel key="falling-scene" ref={canRef} animation="Falling">
           <pointLight intensity={30} color="#8C0413" decay={0.6} />
         </AriaModel>
       </group>

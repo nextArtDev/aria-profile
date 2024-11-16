@@ -9,6 +9,7 @@ import { useGSAP } from '@gsap/react'
 
 import FloatingCan from '@/components/FloatingCan'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import AriaModel from '../AriModel'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -72,6 +73,13 @@ export default function Scene() {
       rotation-y={isDesktop ? -0.3 : 0}
     >
       {/* <FloatingCan flavor="strawberryLemonade" /> */}
+      <AriaModel
+        key="standing-scene"
+        scale={0.8}
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, -0.5, 0]}
+        animation={'Standing'}
+      />
       <Environment files={'/hdr/lobby.hdr'} environmentIntensity={1.5} />
     </group>
   )

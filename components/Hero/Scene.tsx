@@ -131,6 +131,7 @@ export default function Scene({}: Props) {
           scale={0.64}
           ref={ariaRef}
           animation="Gaming"
+          key="gaming-scene"
         />
       </group>
       <group ref={roomGroupRef}>
