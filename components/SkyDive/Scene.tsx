@@ -7,15 +7,16 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import FloatingCan from '@/components/FloatingCan'
+// import FloatingCan from '@/components/FloatingCan'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { SodaCanProps } from '../SodaCan'
+import AriaModel from '../AriModel'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 type SkyDiveProps = {
   sentence: string | null
-  flavor: SodaCanProps['flavor']
+  flavor?: SodaCanProps['flavor']
 }
 
 export default function Scene({ sentence, flavor }: SkyDiveProps) {
@@ -61,7 +62,7 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
 
     // Spinning can
     gsap.to(canRef.current.rotation, {
-      y: Math.PI * 2,
+      // y: Math.PI * 2,
       duration: 1.7,
       repeat: -1,
       ease: 'none',
@@ -139,7 +140,7 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
   return (
     <group ref={groupRef}>
       {/* Can */}
-      <group rotation={[0, 0, 0.5]}>
+      <group rotation={[0, -2.5, -0.5]}>
         {/* <FloatingCan
           ref={canRef}
           flavor={flavor}
@@ -147,8 +148,10 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
           floatIntensity={3}
           floatSpeed={3}
         >
-          <pointLight intensity={30} color="#8C0413" decay={0.6} />
         </FloatingCan> */}
+        <AriaModel ref={canRef} animation="Falling">
+          <pointLight intensity={30} color="#8C0413" decay={0.6} />
+        </AriaModel>
       </group>
 
       {/* Clouds */}
@@ -188,7 +191,7 @@ function ThreeText({
       color={color}
       material={material}
       // should be .woff
-      font="/fonts/Alpino-Variable.woff"
+      // font="/fonts/Alpino-Variable.woff"
       fontWeight={900}
       anchorX={'center'}
       anchorY={'middle'}
